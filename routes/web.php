@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//ruta calculadora indice masa corporal
+Route::post('/calculo-indice-masa', [App\Http\Controllers\CalculoIndiceMasaController::class, 'calcularIMC']);
