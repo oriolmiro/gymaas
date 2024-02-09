@@ -13,4 +13,10 @@ class Language extends Model
         'iso_code',
         'name',
     ];
+    
+    //Relación One-to-Many con la tabla del otro grupo, un lenguaje hace referencia a uno o mas ejercicios
+    // public function modeloDelOtroGrupo()
+    // {
+    //     return $this->hasMany(modeloDelOtroGrupo::class);
+    // }
 }
