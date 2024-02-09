@@ -1,28 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\IndiceMasa;
 
 class CalculoIndiceMasaController extends Controller
 {
-    //función para testera que todo llega 
-    // function saluda(){
-    //     return 'Saluda';
-    // }
+    public function __invoke(Request $request)
+    {
+        $request->validate([
+            'weight'=>'required|numeric',
+            'height'=>'required|numeric',
+        ]);
+        
+        $weight = $request->input('weight');
+        $height = $request->input('height');
 
-    public function calculIndiceMasa($altura)
-{
-    // Verificar que el valor es numérico
-    if (!is_numeric($altura)) {
-        return 'La altura tiene que ser un número';
+      $calcularIbm = new  IndiceMasa();
+      $calcular =  $calcularIbm->calculIndiceMasa($weight , $height);
+      return response()->json(json_decode($calcular,true));
+
     }
-
-    // Aquí iría la lógica para calcular el IMC si se desea
-    // ...
-
-    return true; // Por ejemplo, si todo está correcto (esto es solo para ilustrar)
-}
-
-  
 }
