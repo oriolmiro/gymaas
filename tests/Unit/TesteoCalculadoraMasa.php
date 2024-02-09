@@ -10,21 +10,21 @@ use App\Models\IndiceMasa;
 class TesteoCalculadoraMasa extends TestCase
 {
     /**
-     * A basic test example.
+     * testeo para el modleo IndiceMasa
      */
 
     public function test_calcuMasa()
 {
-    $weight = 70; // Corregido de 7.0 a 70 para el ejemplo
+    $weight = 70; // variables de ejemplo
     $height = 1.75;
 
-    $calcularIbm = new IndiceMasa();
-    $resultado = $calcularIbm->calculIndiceMasa($weight, $height);
+    $calcularIbm = new IndiceMasa();//creo el objeto
+    $resultado = $calcularIbm->calculIndiceMasa($weight, $height);//llamo al objeto y su función
 
-    // Calcula el IMC esperado manualmente o define el valor esperado directamente
-    $esperado = $weight / ($height * $height);
+    
+    $esperado = $weight / ($height * $height);//el resultado que se espera
 
-    // Compara el resultado con el valor esperado
+    // verifico
     $this->assertEquals($esperado, $resultado);
 }
 }
