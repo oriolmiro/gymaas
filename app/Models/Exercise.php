@@ -16,6 +16,10 @@ class Exercise extends Model
         'gif',
         'secondary_muscles',
         'instructions',
-        'lang'
+        'lang',
+        'body_part_id',
+        'equipment_id',
+        'target_id',
+        'exercise_id'
     ];
 }
