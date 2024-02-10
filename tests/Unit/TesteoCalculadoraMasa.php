@@ -10,21 +10,21 @@ use App\Models\IndiceMasa;
 class TesteoCalculadoraMasa extends TestCase
 {
     /**
-     * testeo para el modleo IndiceMasa
+     * Testeo para el modelo IndiceMasa
      */
 
     public function test_calcuMasa()
-{
-    $weight = 70; // variables de ejemplo
-    $height = 1.75;
+    {
+        $weight = 10; // parámetros
+        $height = 10;
 
-    $calcularIbm = new IndiceMasa();//creo el objeto
-    $resultado = $calcularIbm->calculIndiceMasa($weight, $height);//llamo al objeto y su función
+        $calcularIbm = new IndiceMasa(); // Creo el objeto
 
-    
-    $esperado = $weight / ($height * $height);//el resultado que se espera
+        $resultado = $calcularIbm->calculIndiceMasa($weight, $height); // Llamo al objeto y su función
+        $esperado = $weight / ($height * $height); // El resultado que se espera
 
-    // verifico
-    $this->assertEquals($esperado, $resultado);
-}
+
+        // Verifico que el resultado del cálculo sea el esperado
+        $this->assertEquals($esperado, $resultado);
+    }
 }
