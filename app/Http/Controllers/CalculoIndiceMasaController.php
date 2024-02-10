@@ -13,7 +13,44 @@ use App\Models\IndiceMasa;
 class CalculoIndiceMasaController extends Controller
 {
 
-   
+    /**
+     * @OA\Get(
+     *     path="/calculoIndiceMasa",
+     *     tags={"CalculoIndiceMasa"},
+     *     summary="Calcula el Índice de Masa Corporal (IMC)",
+     *     @OA\Parameter(
+     *         name="weight",
+     *         in="query",
+     *         description=" Peso en kilogramos",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="number",
+     *             format="float"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="height",
+     *         in="query",
+     *         description="Altura en metros",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="number",
+     *             format="float"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Operación exitosa",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="imc", type="number", format="float", example="22.49")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Datos inválidos"
+     *     )
+     * )
+     */
     public function __invoke(Request $request)
     {
         $request->validate([ //verifico que los valores que entren sean números y mas grandes de 0
