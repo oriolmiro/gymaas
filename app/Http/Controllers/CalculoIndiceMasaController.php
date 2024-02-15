@@ -60,10 +60,15 @@ class CalculoIndiceMasaController extends Controller
 
         $weight = $request->input('weight'); //guardo las variables 
         $height = $request->input('height');
-
-        $calcularIbm = new  IndiceMasa(); //creo el objeto 
-        $calcular =  $calcularIbm->calculIndiceMasa($weight, $height); //llamo al objeto y le paso la función
-        return response()->json(json_decode($calcular, true)); //retorno el resultado en formato json
-
+        try {
+            $calcularIbm = new  IndiceMasa(); //creo el objeto 
+            $calcular =  $calcularIbm->calculIndiceMasa($weight, $height); //llamo al objeto y le paso la función
+            return response()->json(json_decode($calcular, true)); //retorno el resultado en formato json
+            //recogemos las excepciones que vienen del modelo y las mostramos si algo salio mal
+        } catch (\InvalidArgumentException $error) {
+            //['error' => $e->getMessage()] crea un array asociativo con una clave error, 
+            //cuyo valor es el mensaje de la excepción sera el mismo que viene del modelo 
+            return response()->json(['error' => $error->getMessage()], 400);
+        }
     }
 }
