@@ -2,7 +2,7 @@
 
 namespace App\Translators;
 
-use GuzzleHttp\Client;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class GoogleApiTranslator
 {
@@ -15,18 +15,8 @@ class GoogleApiTranslator
 
     public function translate($text, $sourceLanguage, $targetLanguage)
     {
-        $client = new Client([
-            'base_uri' => 'https://translation.googleapis.com/language/translate/v2/',
-        ]);
-
-        $response = $client->request('POST', 'translate', [
-            'query' => [
-                'key' => $this->apiKey,
-                'q' => $text,
-                'source' => $sourceLanguage,
-                'target' => $targetLanguage,
-            ],
-        ]);
+        $lang = new GoogleTranslate('en');
+        return $lang->setSource('en')->setTarget('es')->translate('Hello world.');
 
         $data = json_decode($response->getBody(), true);
 
