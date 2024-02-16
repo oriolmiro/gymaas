@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalculoIndiceMasaController;
+use App\Http\Controllers\IdealWeightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //ruta calculadora indice masa corporal
 Route::post('/calcular-imc', CalculoIndiceMasaController::class);
+//rura calculadora peso ideal
+Route::get('/pesoIdeal', IdealWeightController::class);

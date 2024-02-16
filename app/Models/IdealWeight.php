@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PesoIdeal extends Model
+
+
+class IdealWeight extends Model
 {
     //use HasFactory;
     public function caculaPesoIdeal($height, $gender)
@@ -19,7 +22,7 @@ class PesoIdeal extends Model
             throw new \InvalidArgumentException('La altura tiene que ser superior de 0');
             # code...
         }
-        if ($gender != 'male' && $gender != 'female') { //si llega algo que no sea Male o Femele
+        if ($gender != 'male' && $gender != 'female') { //si llega algo que no sea Male o Female
             throw new \InvalidArgumentException('El genero solo puede ser Male para hombres o Female para yeguas');
         }
         if ($gender === 'male') {//calculo el peso ideal hombres fórmula PesoIdeal = 50+2.3×(Alturaencm−60)

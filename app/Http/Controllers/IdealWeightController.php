@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IndiceMasa;
+use PHPUnit\Framework\TestCase;
+use App\Models\IdealWeight;
 
-class PesoIdeal extends Controller
+
+class IdealWeightController extends Controller
 {
 
     /**
@@ -50,13 +53,14 @@ class PesoIdeal extends Controller
     {
         $request->validate([ //verificamos otra vez
             'height' => 'required|numeric|min:0.01',
-            'gender' => 'in:Male,Female',
+            'gender' => 'in:male,female',
+            
         ]);
         $height = $request->input('height'); //guardo las variables 
         $gender = $request->input('gender');
 
         try {
-            $calculaPesoIdeal = new  PesoIdeal(); //creo el objeto 
+            $calculaPesoIdeal = new  IdealWeight(); //creo el objeto 
             $calcular =  $calculaPesoIdeal->caculaPesoIdeal($height, $gender); //llamo al objeto y le paso la función
             return response()->json(json_decode($calcular, true));
         } catch (\InvalidArgumentException $error) {
