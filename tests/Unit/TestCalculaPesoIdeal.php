@@ -11,6 +11,16 @@ class TestCalculaPesoIdeal extends TestCase
      */
     public function test_pesoIdeal(): void
     {
-        $this->assertTrue(true);
+        $height = 180; // parámetros
+        $gender = 'female';
+
+        $calculaPesoIdeal = new  PesoIdeal(); //creo el objeto 
+        $resultado = $calculaPesoIdeal->caculaPesoIdeal($height, $gender);
+        $esperado = 45 + 2.3 * ($height -60);// El resultado que se espera
+
+        // Verifico que el resultado del cálculo sea el esperado
+        $this->assertEquals($esperado, $resultado);
+        
+        
     }
 }

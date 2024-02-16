@@ -19,14 +19,14 @@ class PesoIdeal extends Model
             throw new \InvalidArgumentException('La altura tiene que ser superior de 0');
             # code...
         }
-        if ($gender != 'Male' && $gender != 'Female') { //si llega algo que no sea Male o Femele
+        if ($gender != 'male' && $gender != 'female') { //si llega algo que no sea Male o Femele
             throw new \InvalidArgumentException('El genero solo puede ser Male para hombres o Female para yeguas');
         }
-        if ($gender === 'Male') {//calculo el peso ideal hombres fórmula PesoIdeal = 50+2.3×(Alturaencm−60)
+        if ($gender === 'male') {//calculo el peso ideal hombres fórmula PesoIdeal = 50+2.3×(Alturaencm−60)
             return  $idealWeight = 50 + 2.3 * ($height -60);
 
         }
-        if ($gender === 'Female') {//calculo el peso ideal mujeres fórmula PesoIdeal=45.5+2.3×(Alturaencm−60)
+        if ($gender === 'female') {//calculo el peso ideal mujeres fórmula PesoIdeal=45.5+2.3×(Alturaencm−60)
            return $idealWeight = 45 + 2.3 * ($height -60);
 
         }
