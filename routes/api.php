@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BodyPartController;
 use App\Http\Controllers\ExerciseByBodyPartController;
+use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\ExerciseByNameController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +18,9 @@ use App\Http\Controllers\ExerciseByBodyPartController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::get('/exercises', [ExerciseController::class, 'index']);
+Route::get('/exercises/{name}', [ExerciseByNameController::class, 'index']);
 
 
 Route::get('/exercises/bodyPartList', BodyPartController::class);
