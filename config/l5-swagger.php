@@ -1,17 +1,6 @@
 <?php
 
 
-/**
- * @OA\Info(
- *      version="1.0.0",
- *      title="API de Ejercicios",
- *      description="API para acceder a una lista de ejercicios y partes del cuerpo asociadas a ellos.",
- *      @OA\Contact(
- *          email="tuemail@example.com",
- *          name="Cristian"
- *      )
- * )
- */
 
 return [
     'default' => 'default',
