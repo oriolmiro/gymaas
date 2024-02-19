@@ -11,7 +11,6 @@ use App\Models\Target;
 class Exercise extends Model
 {
     use HasFactory;
-
     protected $table = 'exercises';
 
     protected $fillable = [
