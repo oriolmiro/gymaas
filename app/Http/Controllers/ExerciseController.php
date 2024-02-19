@@ -3,65 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exercise;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreExerciseRequest;
-use App\Http\Requests\UpdateExerciseRequest;
+use Illuminate\Http\Request;
 
+/**
+ * @OA\Tag(
+ *     name="Exercises",
+ *     description="Endpoints relacionados con ejercicios"
+ * )
+ */
 class ExerciseController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Obtener todos los ejercicios.
+     *
+     * @OA\Get(
+     *      path="/exercises",
+     *      operationId="getAllExercises",
+     *      tags={"Exercises"},
+     *      summary="Obtener todos los ejercicios",
+     *      description="Obtiene una lista de todos los ejercicios.",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Lista de ejercicios"
+     *      )
+     * )
      */
-    public function index()
+    public function __invoke()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreExerciseRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Exercise $exercise)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Exercise $exercise)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateExerciseRequest $request, Exercise $exercise)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Exercise $exercise)
-    {
-        //
+        $exercises = Exercise::all();
+        return response()->json($exercises);
     }
 }
