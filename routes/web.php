@@ -1,5 +1,6 @@
 <?php
 
+use App\Translators\DeeplLApiTranslator;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+
+
+});
+Route::get('/DeepLtranslate', function (){
+    $translator = new DeeplLApiTranslator();
+    echo $translator->translate('Hello, world!', 'en', 'es');
 });
