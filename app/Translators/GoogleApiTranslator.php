@@ -6,14 +6,17 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class GoogleApiTranslator
 {
+    // protected $apiKey;
+
+    // // public function __construct($apiKey)
+    // // {
+    // //     $this->apiKey = $apiKey;
+    // // }
+
     public function translate($text, $sourceLanguage, $targetLanguage)
     {
-        // Crea una nueva instancia de GoogleTranslate, pasando 'en' como idioma de origen
-        $translator = new GoogleTranslate('en');
+        $lang = new GoogleTranslate('en');
+        return $lang->setSource($sourceLanguage)->setTarget($targetLanguage)->translate($text);
 
-        // Establece el idioma de origen y de destino, y luego traduce el texto
-        return $translator->setSource($sourceLanguage)
-                         ->setTarget($targetLanguage)
-                         ->translate($text);
     }
 }
