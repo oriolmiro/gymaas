@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Body_part;
+use App\Models\BodyPart;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,7 +28,7 @@ class BodyPartSeeder extends Seeder
 
         // Guarda totes les body_parts a la BD
         foreach ($body_parts as $body_part) {
-            Body_part::create(['name' => $body_part]);
+            BodyPart::create(['name' => $body_part]);
         }
     }
 }
