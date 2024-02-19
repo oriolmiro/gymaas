@@ -20,17 +20,28 @@ class ExerciseController extends Controller
      *      path="/exercises",
      *      operationId="getAllExercises",
      *      tags={"Exercises"},
-     *      summary="Obtener todos los ejercicios",
-     *      description="Obtiene una lista de todos los ejercicios.",
+     *      summary="Show all the exercises",
+     *      description="Obtain a list of all the exercises",
      *      @OA\Response(
      *          response=200,
-     *          description="Lista de ejercicios"
+     *          description="Exercises List"
      *      )
      * )
      */
-    public function __invoke()
+    public function index()
     {
         $exercises = Exercise::all();
-        return response()->json($exercises);
+
+        $filteredExercises = $exercises->map(function ($exercise) {
+            return [
+                'name' => $exercise->name,
+                'gif' => asset($exercise->gif),
+                'secondary_muscles' => $exercise->secondary_muscles,
+                'body_part_name' => $exercise->bodyPart->name,
+                'equipment_name' => $exercise->equipment->name,
+                'target_name' => $exercise->target->name
+            ];
+        });
+        return response()->json($filteredExercises);
     }
 }
