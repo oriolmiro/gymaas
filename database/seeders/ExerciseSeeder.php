@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Body_part;
+use App\Models\BodyPart;
 use App\Models\Equipment;
 use App\Models\Exercise;
 use App\Models\Target;
@@ -35,7 +35,7 @@ class ExerciseSeeder extends Seeder
                 'secondary_muscles' => implode(',', $exercise['secondaryMuscles']),
                 'instructions' => json_encode($exercise['instructions']),
                 'lang' => 'en',
-                'body_part_id' => Body_part::where('name',$exercise['bodyPart'])->first()->id,
+                'body_part_id' => BodyPart::where('name',$exercise['bodyPart'])->first()->id,
                 'equipment_id' => Equipment::where('name',$exercise['equipment'])->first()->id,
                 'target_id' => Target::where('name',$exercise['target'])->first()->id,
                 'exercise_id' => 0
