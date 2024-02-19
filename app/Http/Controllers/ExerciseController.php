@@ -17,6 +17,7 @@ class ExerciseController extends Controller
      * Obtener todos los ejercicios.
      *
      * @OA\Get(
+     * 
      *      path="/exercises",
      *      operationId="getAllExercises",
      *      tags={"Exercises"},
@@ -28,9 +29,15 @@ class ExerciseController extends Controller
      *      )
      * )
      */
-    public function index()
+    public function index(Request $request)
     {
         $exercises = Exercise::all();
+        //filter languages
+        if ($request->lang){
+            $exercises = $exercises->where('lang', $request->lang);
+        }else{
+            $exercises = $exercises->where('lang', 'en');
+        }
 
         $filteredExercises = $exercises->map(function ($exercise) {
             return [

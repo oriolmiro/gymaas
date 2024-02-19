@@ -20,7 +20,7 @@ use App\Http\Controllers\ExerciseByNameController;
 */
 
 Route::get('/exercises', [ExerciseController::class, 'index']);
-Route::get('/exercises/{name}', ExerciseByNameController::class);
+Route::get('/exercises/{name}', [ExerciseByNameController::class,'index']);
 
 
 Route::get('/exercises/bodyPartList', BodyPartController::class);
