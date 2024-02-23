@@ -1,6 +1,7 @@
 ## Gym Bro As A Service
 Enllaç a l'[enunciat](https://bolder-equipment-678.notion.site/Gym-Bro-as-a-service-fe4381b1a4ca476b9595e67e9d80e2dd?pvs=4 "Gym Bro As A Service").
 
+
 # API de Ejercicios
 
 Esta API proporciona acceso a una lista de ejercicios y partes del cuerpo asociadas a ellos. Utiliza Laravel como framework de backend y se comunica a través del protocolo HTTP.
@@ -42,3 +43,8 @@ Esta solicitud devolverá una lista en formato JSON de todos los ejercicios asoc
 ## Estructura de la respuesta
 
 Tanto para la lista de partes del cuerpo como para la lista de ejercicios, la respuesta estará en formato JSON y contendrá la información relevante sobre cada elemento devuelto, como su nombre, identificador y otros detalles.
+=======
+Jose - GET BODY MASS INDEX / GET IDEAL BODY WEIGHT
+Xavi - GET BASAL METABOLIC RATE - GET A BODY SHAPE INDEX
+Edwin - GET BODY FAT PERCENTAGE - GET TOTAL DAILY ENERGY EXPENDITURE
+

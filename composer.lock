@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "e9ec51860ea2a76178d8968f692ee949",
+
     "packages": [
         {
             "name": "brick/math",
@@ -3392,6 +3393,7 @@
         },
         {
             "name": "swagger-api/swagger-ui",
+
             "version": "v5.11.7",
             "source": {
                 "type": "git",
@@ -3450,6 +3452,7 @@
                 "source": "https://github.com/swagger-api/swagger-ui/tree/v5.11.7"
             },
             "time": "2024-02-16T09:37:18+00:00"
+
         },
         {
             "name": "symfony/console",
@@ -8408,6 +8411,7 @@
                 }
             ],
             "time": "2024-02-09T16:08:40+00:00"
+
         },
         {
             "name": "theseer/tokenizer",

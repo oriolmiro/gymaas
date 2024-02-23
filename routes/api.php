@@ -2,10 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\BodyPartController;
 use App\Http\Controllers\ExerciseByBodyPartController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ExerciseByNameController;
+use App\Http\Controllers\CalculoIndiceMasaController;
 
 
 /*
@@ -28,5 +30,9 @@ Route::post('/exercises/bodyPart/{bodyPart}', ExerciseByBodyPartController::clas
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+    return $request->user();});
+
+
+//ruta calculadora indice masa corporal
+Route::post('/calcular-imc', CalculoIndiceMasaController::class);
+

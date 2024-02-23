@@ -1,7 +1,6 @@
 <?php
 
 
-
 return [
     'default' => 'default',
     'documentations' => [
@@ -14,17 +13,21 @@ return [
                 /*
                  * Route for accessing api documentation interface
                  */
+
+
                 'api' => 'api/documentation',
             ],
             'paths' => [
                 /*
                  * Edit to include full URL in ui for assets
-                 */
+                */
+
                 'use_absolute_path' => env('L5_SWAGGER_USE_ABSOLUTE_PATH', true),
 
                 /*
                  * File name of the generated json documentation file
-                 */
+                */
+
                 'docs_json' => 'api-docs.json',
 
                 /*
@@ -35,11 +38,18 @@ return [
                 /*
                  * Set this to `json` or `yaml` to determine which documentation file to use in UI
                  */
+                'docs_yaml' => 'api-docs.yaml',
+
+                /*
+                * Set this to `json` or `yaml` to determine which documentation file to use in UI
+                */
+
                 'format_to_use_for_docs' => env('L5_FORMAT_TO_USE_FOR_DOCS', 'json'),
 
                 /*
                  * Absolute paths to directory containing the swagger annotations are stored.
                  */
+
                 'annotations' => [
                     base_path('app'),
                 ],
@@ -52,6 +62,7 @@ return [
             /*
              * Route for accessing parsed swagger annotations.
              */
+
             'docs' => 'docs',
 
             /*
@@ -62,6 +73,7 @@ return [
             /*
              * Middleware allows to prevent unexpected access to API documentation
              */
+
             'middleware' => [
                 'api' => [],
                 'asset' => [],
@@ -72,6 +84,7 @@ return [
             /*
              * Route Group options
              */
+
             'group_options' => [],
         ],
 
@@ -79,6 +92,7 @@ return [
             /*
              * Absolute path to location where parsed annotations will be stored
              */
+
             'docs' => storage_path('api-docs'),
 
             /*
@@ -94,6 +108,7 @@ return [
             /*
              * Edit to set path where swagger ui assets should be stored
              */
+
             'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui/dist/'),
 
             /*
@@ -101,6 +116,7 @@ return [
              * @deprecated Please use `scanOptions.exclude`
              * `scanOptions.exclude` overwrites this
              */
+
             'excludes' => [],
         ],
 
@@ -141,6 +157,7 @@ return [
              * @note This option overwrites `paths.excludes`
              * @see \OpenApi\scan
              */
+
             'exclude' => [],
 
             /*
@@ -153,11 +170,13 @@ return [
         /*
          * API security definitions. Will be generated into documentation file.
          */
+
         'securityDefinitions' => [
             'securitySchemes' => [
                 /*
                  * Examples of Security schemes
                  */
+
                 /*
                 'api_key_security_example' => [ // Unique name of security
                     'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
@@ -205,6 +224,7 @@ return [
                 /*
                  * Examples of Securities
                  */
+
                 [
                     /*
                     'oauth2_security_example' => [
@@ -227,12 +247,14 @@ return [
         /*
          * Set this to `true` to generate a copy of documentation in yaml format
          */
+
         'generate_yaml_copy' => env('L5_SWAGGER_GENERATE_YAML_COPY', false),
 
         /*
          * Edit to trust the proxy's ip address - needed for AWS Load Balancer
          * string[]
          */
+
         'proxy' => false,
 
         /*
@@ -252,11 +274,13 @@ return [
          * Pass the validatorUrl parameter to SwaggerUi init on the JS side.
          * A null value here disables validation.
          */
+
         'validator_url' => null,
 
         /*
          * Swagger UI configuration parameters
          */
+
         'ui' => [
             'display' => [
                 /*
@@ -288,6 +312,7 @@ return [
                     /*
                      * If set to true, adds PKCE to AuthorizationCodeGrant flow
                      */
+
                     'use_pkce_with_authorization_code_grant' => false,
                 ],
             ],
@@ -300,3 +325,4 @@ return [
         ],
     ],
 ];
+
