@@ -20,9 +20,3 @@ Route::get('/', function () {
 
 
 });
-Route::get('/DeepLtranslate', function (){
-    $translator = new DeeplLApiTranslator();
-    echo $translator->translate('Hello, world!', 'en', 'es');
-});
-
-
