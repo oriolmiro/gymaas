@@ -3,6 +3,7 @@
 use App\Translators\DeeplLApiTranslator;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +24,5 @@ Route::get('/DeepLtranslate', function (){
     $translator = new DeeplLApiTranslator();
     echo $translator->translate('Hello, world!', 'en', 'es');
 });
+
+
