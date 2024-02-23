@@ -22,11 +22,11 @@ use App\Http\Controllers\CalculoIndiceMasaController;
 */
 
 Route::get('/exercises', [ExerciseController::class, 'index']);
-Route::get('/exercises/{name}', [ExerciseByNameController::class,'index']);
+Route::get('/exercisebyname', [ExerciseByNameController::class,'index']);
 
 
-Route::get('/exercises/bodyPartList', BodyPartController::class);
-Route::post('/exercises/bodyPart/{bodyPart}', ExerciseByBodyPartController::class);
+Route::get('/exercises/bodypartlist', BodyPartController::class);
+Route::post('/exercises/bodypart/{bodypart}', ExerciseByBodyPartController::class);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
