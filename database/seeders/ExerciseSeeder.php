@@ -34,7 +34,7 @@ class ExerciseSeeder extends Seeder
                 'gif' => '',
                 'secondary_muscles' => implode(',', $exercise['secondaryMuscles']),
                 'instructions' => json_encode($exercise['instructions']),
-                'lang' => 'en',
+                'lang' => 'EN',
                 'body_part_id' => BodyPart::where('name',$exercise['bodyPart'])->first()->id,
                 'equipment_id' => Equipment::where('name',$exercise['equipment'])->first()->id,
                 'target_id' => Target::where('name',$exercise['target'])->first()->id,
