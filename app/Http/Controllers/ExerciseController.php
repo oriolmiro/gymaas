@@ -14,6 +14,13 @@ use Illuminate\Http\Request;
  */
 class ExerciseController extends Controller
 {
+    // === ATTRIBUTES === //
+    private $arrayExcludedTranslationLanguages = [
+        'EN'
+    ];
+
+    // === METHODS === //
+
     /**
      * Obtener todos los ejercicios.
      *
@@ -64,21 +71,24 @@ class ExerciseController extends Controller
         $arrayLanguages = $languageController->index();
 
         foreach ($arrayLanguages as $language) {
-            // Get all exercises with pending current language
-            $arrayNonReferencedLanguageExercises = $exercise->getNonReferencedLanguageExercises($language['iso_code']);
+            // Check if language is not in array of excluded language translations
+            if (!in_array($language['iso_code'], $this->arrayExcludedTranslationLanguages)) {
+                // Get all exercises with pending current language
+                $arrayNonReferencedLanguageExercises = $exercise->getNonReferencedLanguageExercises($language['iso_code']);
 
-            foreach ($arrayNonReferencedLanguageExercises as $nonReferencedLanguageExercise) {
-                Exercise::create([
-                    'name' => '',
-                    'gif' => $nonReferencedLanguageExercise->gif,
-                    'secondary_muscles' => '',
-                    'instructions' => '[]',
-                    'lang' => $language['iso_code'],
-                    'body_part_id' => $nonReferencedLanguageExercise->body_part_id,
-                    'equipment_id' => $nonReferencedLanguageExercise->equipment_id,
-                    'target_id' => $nonReferencedLanguageExercise->target_id,
-                    'exercise_id' => $nonReferencedLanguageExercise->id,
-                ]);
+                foreach ($arrayNonReferencedLanguageExercises as $nonReferencedLanguageExercise) {
+                    Exercise::create([
+                        'name' => '',
+                        'gif' => $nonReferencedLanguageExercise->gif,
+                        'secondary_muscles' => '',
+                        'instructions' => '[]',
+                        'lang' => $language['iso_code'],
+                        'body_part_id' => $nonReferencedLanguageExercise->body_part_id,
+                        'equipment_id' => $nonReferencedLanguageExercise->equipment_id,
+                        'target_id' => $nonReferencedLanguageExercise->target_id,
+                        'exercise_id' => $nonReferencedLanguageExercise->id,
+                    ]);
+                }
             }
         }
     }
