@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             BodyPartSeeder::class,
             EquipmentSeeder::class,
             TargetSeeder::class,
-            ExerciseSeeder::class
+            ExerciseSeeder::class,
+            LanguageSeeder::class,
         ]);
     }
 }
