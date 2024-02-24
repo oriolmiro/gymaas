@@ -110,4 +110,26 @@ class Exercise extends Model
     public function getColumnsToTranslate() {
         return $this->columnsToTranslate;
     }
+
+    /** 
+     * Return all exercises that does not have 
+     * an ISO CODE tuple as given in parameter.
+     * 
+     * @param String $languageIsoCode - 
+     * 
+     * @return array
+     * */
+    public function getNonReferencedLanguageExercises(String $languageIsoCode) {
+        return DB::select(
+            "SELECT * "
+            . "FROM " . $this->table . " " 
+            . "WHERE "
+            .   "id NOT IN ("
+            .   "SELECT exercise_id "
+                . "FROM " . $this->table . " " 
+                . "WHERE lang='". $languageIsoCode . "'" 
+            . ") AND "
+            . "lang = 'EN'"
+        );
+    }
 }
