@@ -13,7 +13,7 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
+        return Language::all();
     }
 
     /**
