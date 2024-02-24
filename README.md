@@ -81,7 +81,7 @@ Using scheduled tasks, the DB will be updated with new languages and translation
 #### _1. Add DeepL API key_
 When you make a copy of file `.env.example` named `.env` you will see an environment variable called `APIDEEPL_KEY`, put there your DeepL API key to use DeepL translator.
 
-```
+```text
 APIDEEPL_KEY=YOUR_DEEPL_API_KEY
 ```
 
@@ -89,15 +89,32 @@ APIDEEPL_KEY=YOUR_DEEPL_API_KEY
 
 > **More info:** [https://support.deepl.com/hc/es/articles/360020695820-Clave-de-autenticaci%C3%B3n](https://support.deepl.com/hc/es/articles/360020695820-Clave-de-autenticaci%C3%B3n)
 
-#### _2. Run migrations and seeders_
+#### _2. Install dependencies_
+Using `composer`, run commands shown below:
+```bash
+composer update
+composer install
+```
+
+#### _3. Run migrations and seeders_
+**_OPTION A_**
 ```bash
 php artisan migrate
 php artisan migrate:refresh --seed
 ```
 
-Or grab SQL code from file `/gymass.sql` and execute it in your DB.
+**_OPTION B_**
 
-#### _3. Run scheduled tasks_
+Do the process manually. 
+
+Create the DB and tables running migrations:
+```bash
+php artisan migrate
+```
+
+Then manually seed the tables coping, pasting and executing the SQL code from `manualGymaasSeeder.php` file into your DB.
+
+#### _4. Run scheduled tasks_
 Once you have in your DB `Exercises` and `Languages` tables created and seeded, execute the scheduled tasks to add referenced languages and translations to exercises.
 
 ```bash
