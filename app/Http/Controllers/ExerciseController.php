@@ -82,4 +82,16 @@ class ExerciseController extends Controller
         }
     }
 
+    /** 
+     * Return exercises pending translations.
+     * 
+     * @param int $limit - Default 5
+     * 
+     * @return array 
+     * */
+    public function getPendingTranslations(int $limit = 5) {
+        $exercise = new Exercise();
+        return $exercise->getExercisesPendingTranslations($limit);
+    }
+
 }
