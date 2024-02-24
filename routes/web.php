@@ -1,6 +1,5 @@
 <?php
 
-use App\Translators\DeeplLApiTranslator;
 use Illuminate\Support\Facades\Route;
 
 
