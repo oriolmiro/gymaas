@@ -28,6 +28,7 @@ return new class extends Migration
 
         Schema::table('exercises', function (Blueprint $table) {
             $table->foreignId("exercise_id");
+            $table->foreign('lang')->references('iso_code')->on('languages');
         });
     }
 
