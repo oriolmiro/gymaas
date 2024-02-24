@@ -51,4 +51,35 @@ class ExerciseController extends Controller
         });
         return response()->json($filteredExercises);
     }
+
+    /** 
+     * Add new/pending languages to exercises.
+     * */
+    public function addPendingLanguagesToExercises() {
+        $languageController = new LanguageController();
+        $exercise = new Exercise();
+
+        // Get all stored lanaguages
+        $arrayLanguages = $languageController->index();
+
+        foreach ($arrayLanguages as $language) {
+            // Get all exercises with pending current language
+            $arrayNonReferencedLanguageExercises = $exercise->getNonReferencedLanguageExercises($language['iso_code']);
+
+            foreach ($arrayNonReferencedLanguageExercises as $nonReferencedLanguageExercise) {
+                Exercise::create([
+                    'name' => '',
+                    'gif' => $nonReferencedLanguageExercise->gif,
+                    'secondary_muscles' => '',
+                    'instructions' => '[]',
+                    'lang' => $language['iso_code'],
+                    'body_part_id' => $nonReferencedLanguageExercise->body_part_id,
+                    'equipment_id' => $nonReferencedLanguageExercise->equipment_id,
+                    'target_id' => $nonReferencedLanguageExercise->target_id,
+                    'exercise_id' => $nonReferencedLanguageExercise->id,
+                ]);
+            }
+        }
+    }
+
 }
