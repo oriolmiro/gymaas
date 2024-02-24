@@ -101,4 +101,13 @@ class Exercise extends Model
         
         return DB::select($query);
     }
+
+    /** 
+     * Return array of columns to translate.
+     * 
+     * @return array
+     * */
+    public function getColumnsToTranslate() {
+        return $this->columnsToTranslate;
+    }
 }
