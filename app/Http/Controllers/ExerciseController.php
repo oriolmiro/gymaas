@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exercise;
+use App\Translators\TranslatorManager;
 use Illuminate\Http\Request;
 
 /**
@@ -94,4 +95,63 @@ class ExerciseController extends Controller
         return $exercise->getExercisesPendingTranslations($limit);
     }
 
+    /** 
+     * Define how table will gonna be translated.
+     * */
+    public function initTranslation() {
+        $exercise = new Exercise();
+        $translator = new TranslatorManager();
+
+        // Get pending exercises translations
+        $arrayPendingTranslations = $this->getPendingTranslations();
+
+        foreach ($arrayPendingTranslations as $pendingTranslation) {
+            // Parse StdClass to array
+            $pendingTranslation = json_decode(json_encode($pendingTranslation), true);
+            $referencedExercise = json_decode(json_encode(Exercise::findOrFail($pendingTranslation['exercise_id'])), true);
+
+            // Save Exercises columns to translate
+            $arrayColumnsToTranslate = $exercise->getColumnsToTranslate();
+
+            foreach ($arrayColumnsToTranslate as $columnName => $attributes) {
+                // Check column data type
+                switch ($attributes['type']) {
+                    case 'json':
+                        $arrayJsonReferencedExercise = json_decode($referencedExercise[$columnName], true);
+                        $arrayJsonPendingTranslation = json_decode($pendingTranslation[$columnName], true);
+                        $arrayTranslations = [];
+
+                        // Translate all pending data from JSON
+                        for ($i = 0; $i < count($arrayJsonReferencedExercise); $i++) {
+                            // Check current position is in array of pending translations
+                            if (!array_key_exists($i, $arrayJsonPendingTranslation)) {
+                                $translatedValue = $translator->translate($arrayJsonReferencedExercise[$i], $referencedExercise['lang'], $pendingTranslation['lang']);
+                            } else {
+                                $translatedValue = $arrayJsonPendingTranslation[$i];
+                            }
+
+                            // Add current translated value to array of translations
+                            array_push($arrayTranslations, $translatedValue);
+                        }
+
+                        // Update value of current column in table
+                        Exercise::where('id', $pendingTranslation['id'])->update([$columnName => $arrayTranslations]);
+                        break;
+
+                    case 'string':
+                        // Check if current value is not already translated
+                        if (empty(trim($pendingTranslation[$columnName]))) {
+                            // Translate value
+                            $translatedValue = $translator->translate($referencedExercise[$columnName], $referencedExercise['lang'], $pendingTranslation['lang']);
+                        } else {
+                            $translatedValue = $pendingTranslation[$columnName];
+                        }
+                        
+                        // Update value of current column in table
+                        Exercise::where('id', $pendingTranslation['id'])->update([$columnName => $translatedValue]);
+                        break;
+                }
+            }
+        }
+    }
 }
