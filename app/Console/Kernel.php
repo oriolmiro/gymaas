@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('app:exercise-add-pending-languages-command')->everyMinute();
+        $schedule->command('app:exercise-init-translations-command')->everyFiveMinutes();
     }
 
     /**
