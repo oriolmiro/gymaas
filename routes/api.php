@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalculoIndiceMasaController;
 use App\Http\Controllers\IdealWeightController;
+use App\Http\Controllers\CalculatorBASALMETABOLICRATEController;
+use App\Http\Controllers\CalculatorICCController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//ruta calculadora indice masa corporal
+// Ruta calculadora índice masa corporal:
 Route::post('/calcular-imc', CalculoIndiceMasaController::class);
-//rura calculadora peso ideal
+
+// Ruta calculadora peso ideal:
 Route::get('/pesoIdeal', IdealWeightController::class);
+
+// Ruta de la calculadora de Basal Metabolic Rate:
+Route::get('/calcular-bmr', [CalculatorBASALMETABOLICRATEController::class,'calculate']);
+
+// Ruta de la calculadora de Índice Cintura Cadera:
+Route::get('/calcular-icc', [CalculatorICCController::class,'calculate']);
