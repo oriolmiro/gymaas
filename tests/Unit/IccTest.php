@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Models\ICC;
 
-class TestICC extends TestCase
+class IccTest extends TestCase
 {
     /**
      * Verifica si la relación cintura-cadera se calcula correctamente.
