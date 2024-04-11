@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use App\Models\BASALMETABOLICRATE;
 
-class TestBMR extends TestCase
+class BmrTest extends TestCase
 {
     public function test_CalculateBMRForMale()
     {
