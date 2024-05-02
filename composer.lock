@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "e9ec51860ea2a76178d8968f692ee949",
-
+    "content-hash": "53b784a551e7889b3a7de5f0dc27b8d8",
     "packages": [
         {
             "name": "brick/math",
@@ -3671,7 +3669,6 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-
             "version": "v5.11.7",
             "source": {
                 "type": "git",
@@ -3682,7 +3679,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/a93ce4ed7d1e3e42d9140625f9996e55a7c82d3c",
                 "reference": "a93ce4ed7d1e3e42d9140625f9996e55a7c82d3c",
-
                 "shasum": ""
             },
             "type": "library",
@@ -3731,7 +3727,6 @@
                 "source": "https://github.com/swagger-api/swagger-ui/tree/v5.11.7"
             },
             "time": "2024-02-16T09:37:18+00:00"
-
         },
         {
             "name": "symfony/console",
@@ -6572,6 +6567,68 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+            "name": "laravel/breeze",
+            "version": "v1.29.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "22c53b84b7fff91b01a318d71a10dfc251e92849"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/22c53b84b7fff91b01a318d71a10dfc251e92849",
+                "reference": "22c53b84b7fff91b01a318d71a10dfc251e92849",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.17",
+                "illuminate/filesystem": "^10.17",
+                "illuminate/support": "^10.17",
+                "illuminate/validation": "^10.17",
+                "php": "^8.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2024-03-04T14:35:21+00:00"
+        },
+        {
             "name": "laravel/pint",
             "version": "v1.13.11",
             "source": {
@@ -8690,7 +8747,6 @@
                 }
             ],
             "time": "2024-02-09T16:08:40+00:00"
-
         },
         {
             "name": "theseer/tokenizer",
