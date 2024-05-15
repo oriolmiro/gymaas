@@ -7,7 +7,7 @@ use Illuminate\Http\Client\Request;
 use PHPUnit\Framework\TestCase;
 use App\Models\IndiceMasa;
 
-class TesteoCalculadoraMasa extends TestCase
+class CalculadoraMasaTest extends TestCase
 {
     /**
      * Testeo para el modelo IndiceMasa
