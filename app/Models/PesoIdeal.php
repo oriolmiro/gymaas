@@ -11,7 +11,7 @@ class PesoIdeal extends Model
     public function caculaPesoIdeal($height, $gender)
     {
 
-        //paso el str a minúsculas y quito espacios 
+        //paso el str a minúsculas y quito espacios
         $gender = trim($gender);
         $gender = strtolower($gender);
 
